@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Awesome Font";
+  font-style: normal;
+  font-weight: 400;
+  font-display: auto; /* or block, swap, fallback, optional */
+  src: local("Awesome Font"), url("/fonts/awesome-l.woff2") format("woff2"),
+    /* will be preloaded */ url("/fonts/awesome-l.woff") format("woff"),
+    url("/fonts/awesome-l.ttf") format("truetype"),
+    url("/fonts/awesome-l.eot") format("embedded-opentype");
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+main {
+  height: calc(100vh - 80px);
+}

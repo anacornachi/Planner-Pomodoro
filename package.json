@@ -1,0 +1,17 @@
+{
+  "name": "ceep",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind": "npx postcss src/styles/tailwind.css -o src/styles/style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.3.3",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.9"
+  }
+}

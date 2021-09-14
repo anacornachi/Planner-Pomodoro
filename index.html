@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <link rel="stylesheet" href="./src/styles/global.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preload" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&family=Schoolbell&display=swap"
+      rel="stylesheet"
+    />
+    <title>PomoPlanner</title>
+  </head>
+  <body class="bg-bg__gray w-full h-screen">
+    <header class="bg-primary__gray h-20 shadow-lg w-full">
+      <div class="flex justify-between h-full max-w-7xl mx-auto px-4">
+        <div class="flex items-center">
+          <h1 class="text-primary__red font-cursive text-4xl">
+            <a class="align-middle" href="#">PomoPlanner</a>
+          </h1>
+        </div>
+        <nav
+          class="flex items-center gap-10 text-primary__red font-serif text-xl"
+        >
+          <a
+            href="#sign-in"
+            class="border-b-2 border-primary__gray hover:border-primary__red"
+            >Login</a
+          >
+          <a
+            href="#sign-up"
+            class="border-b-2 border-primary__gray hover:border-primary__red"
+            >Cadastro</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main class="flex">
+      <section class="w-1/4 bg-secondary__gray flex flex-col">
+        <div class="relative w-full h-24 flex justify-center items-center">
+          <img
+            src="./src/assets/images/highlighter.svg"
+            alt=""
+            class="absolute"
+          />
+          <h2 class="text-black font-serif absolute text-2xl">
+            Prioridades do dia
+          </h2>
+        </div>
+        <form
+          class="
+            bg-primary__red
+            rounded-2xl
+            h-12
+            flex
+            items-center
+            justify-center
+            mx-10
+            p-1
+          "
+        >
+          <label for="tasks"></label>
+          <input
+            data-priorities-input
+            type="text"
+            id="tasks"
+            maxlength="65"
+            placeholder="Adicione aqui sua tarefa"
+            class="
+              bg-primary__red
+              rounded
+              placeholder-white
+              h-full
+              w-5/6
+              text-white
+              font-serif
+              focus:outline-none
+              text-xs
+              pr-2
+            "
+          />
+          <button data-priorities-button>
+            <img src="./src/assets/images/arrow.svg" alt="" />
+          </button>
+        </form>
+        <div class="w-full mx-auto h-full p-4">
+          <ul
+            class="w-full bg-primary__gray bg-opacity-40 grid gap-1"
+            data-list
+          ></ul>
+        </div>
+      </section>
+      <section class="h-full w-full px-10 pr-32">
+        <div
+          class="flex justify-between items-center h-40 align-middle"
+          data-header-pomodoro
+        >
+          <img
+            src="./src/assets/images/tomato.webp"
+            class="h-full object-contain"
+            alt=""
+          />
+        </div>
+      </section>
+    </main>
+    <script src="./src/js/main.js"></script>
+  </body>
+</html>
