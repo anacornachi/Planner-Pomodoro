@@ -21931,6 +21931,11 @@ video {
   line-height: 1;
 }
 
+.text-timer {
+  font-size: 12rem;
+  line-height: 1;
+}
+
 .font-thin {
   font-weight: 100;
 }
@@ -52244,6 +52249,11 @@ video {
     line-height: 1;
   }
 
+  .sm\:text-timer {
+    font-size: 12rem;
+    line-height: 1;
+  }
+
   .sm\:font-thin {
     font-weight: 100;
   }
@@ -82542,6 +82552,11 @@ video {
 
   .md\:text-9xl {
     font-size: 8rem;
+    line-height: 1;
+  }
+
+  .md\:text-timer {
+    font-size: 12rem;
     line-height: 1;
   }
 
@@ -112846,6 +112861,11 @@ video {
     line-height: 1;
   }
 
+  .lg\:text-timer {
+    font-size: 12rem;
+    line-height: 1;
+  }
+
   .lg\:font-thin {
     font-weight: 100;
   }
@@ -143147,6 +143167,11 @@ video {
     line-height: 1;
   }
 
+  .xl\:text-timer {
+    font-size: 12rem;
+    line-height: 1;
+  }
+
   .xl\:font-thin {
     font-weight: 100;
   }
@@ -173445,6 +173470,11 @@ video {
 
   .\32xl\:text-9xl {
     font-size: 8rem;
+    line-height: 1;
+  }
+
+  .\32xl\:text-timer {
+    font-size: 12rem;
     line-height: 1;
   }
 
