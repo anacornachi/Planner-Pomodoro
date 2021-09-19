@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "npx postcss src/styles/tailwind.css -o src/styles/style.css"
+    "tailwind": "npx postcss src/styles/tailwind.css -o src/styles/style.css",
+    "init:tailwind": "npm i -D @fullhuman/postcss-purgecss autoprefixer postcss postcss-cli tailwindcss postcss-import"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^10.3.3",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "autoprefixer": "^10.3.4",
+    "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.2.9"
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.15"
   }
 }

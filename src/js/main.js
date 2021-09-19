@@ -4,13 +4,33 @@ const botao = document.querySelector("[data-priorities-button]");
 class TodoList {
   constructor(selector) {
     this.todoList = document.querySelector(selector);
-    this.arrayTodos = [];
+    this.arrayTodos;
+
+    this.getTodos();
+    this.renderTodos();
+  }
+
+  getTodos() {
+    const todos = JSON.parse(localStorage.getItem("todos"));
+
+    if (todos === null) {
+      localStorage.setItem("todos", "[]");
+      this.arrayTodos = [];
+      return;
+    }
+
+    this.arrayTodos = todos;
+  }
+
+  save() {
+    localStorage.setItem("todos", JSON.stringify(this.arrayTodos));
   }
 
   add(task) {
     this.arrayTodos.push({ task, done: false });
     input.value = "";
     this.renderTodos();
+    this.save();
   }
   conclude(index) {
     this.arrayTodos = this.arrayTodos.map((item, indice) => {
@@ -21,6 +41,7 @@ class TodoList {
       return item;
     });
     this.renderTodos();
+    this.save();
   }
   delete(index) {
     // Método 1 - Array Filter
@@ -32,9 +53,9 @@ class TodoList {
     this.arrayTodos.splice(index, 1);
 
     this.renderTodos();
+    this.save();
   }
   renderTodos() {
-    console.log({ todos: this.arrayTodos });
     // ${todo.done ? 'bg-green' : 'bg-white'} - Isto é um operador ternário
     this.todoList.innerHTML = this.arrayTodos
       .map(
@@ -91,33 +112,101 @@ headerPomodoro.innerHTML += `<p class="text-primary__red text-3xl font-serif h-f
 
 //  TIMER
 
-const teste = document.querySelector("[data-timer-pomodoro]");
-
-let segundos = 0;
-let minutos = 0;
-var myVar = setInterval(myTimer, 1000);
-
-function startTimer() {}
-
-function myTimer() {
-  if (segundos === 59) {
-    segundos = 0;
-    minutos++;
-  } else {
-    segundos++;
-    console.log(segundos);
-  }
-  teste.innerHTML = `${minutos < 10 ? "0" + minutos : minutos}:${
-    segundos < 10 ? "0" + segundos : segundos
-  }`;
-}
-
-function myStopFunction() {
-  clearInterval(myVar);
-}
-
 class Timer {
-  // constructor(DEVE RECEBER O TIPO DE BOTAO DE QUE FOI CLICADO)
+  constructor(selectors) {
+    this.timer = document.querySelector(selectors.timer);
+    this.pomodoroElement = document.querySelector(selectors.pomodoro);
+    this.shortBreakElement = document.querySelector(selectors.shortBreak);
+    this.longBreakElement = document.querySelector(selectors.longBreak);
+    this.segundos = 0;
+    this.minutos = 25;
+    this.runTimer = console.log("Timer initialized");
+    this.selected = "pomodoro";
+  }
+
+  selectButton(type) {
+    const active = "bg-primary__red";
+    const disabled = "bg-secondary__red";
+
+    this.shortBreakElement.classList.replace(active, disabled);
+    this.pomodoroElement.classList.replace(active, disabled);
+    this.longBreakElement.classList.replace(active, disabled);
+
+    switch (type) {
+      case "pomodoro":
+        this.pomodoroElement.classList.replace(disabled, active);
+        break;
+      case "shortBreak":
+        this.shortBreakElement.classList.replace(disabled, active);
+        break;
+      case "longBreak":
+        this.longBreakElement.classList.replace(disabled, active);
+        break;
+    }
+  }
+
+  start() {
+    this.runTimer = setInterval(() => {
+      if (this.segundos === 0) {
+        this.segundos = 59;
+        this.minutos--;
+      } else {
+        this.segundos--;
+      }
+
+      this.render();
+    }, 1000);
+  }
+
+  render() {
+    this.timer.innerHTML = `${
+      this.minutos < 10 ? "0" + this.minutos : this.minutos
+    }:${this.segundos < 10 ? "0" + this.segundos : this.segundos}`;
+  }
+
+  stop() {
+    clearInterval(this.runTimer);
+  }
+
+  clear() {
+    this.stop();
+    this.minutos = 25;
+    this.segundos = 0;
+
+    this.render();
+  }
+
+  pomodoro() {
+    this.stop();
+    this.minutos = 25;
+    this.segundos = 0;
+
+    this.selectButton("pomodoro");
+    this.render();
+  }
+
+  shortBreak() {
+    this.stop();
+    this.minutos = 5;
+    this.segundos = 0;
+
+    this.selectButton("shortBreak");
+    this.render();
+  }
+  longBreak() {
+    this.stop();
+    this.minutos = 15;
+    this.segundos = 0;
+
+    this.selectButton("longBreak");
+    this.render();
+  }
 }
 
-const timer = new Timer(document.querySelector("[data-timer-pomodoro]"));
+const selectors = {
+  timer: "[data-timer-pomodoro]",
+  pomodoro: "[data-pomodoro]",
+  shortBreak: "[data-short-break]",
+  longBreak: "[data-long-break]",
+};
+const timer = new Timer(selectors);

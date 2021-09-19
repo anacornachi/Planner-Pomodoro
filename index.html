@@ -100,6 +100,8 @@
         </div>
         <div class="flex gap-10 justify-center h-10">
           <button
+            data-pomodoro
+            onclick="timer.pomodoro()"
             class="
               text-white
               font-serif
@@ -116,6 +118,7 @@
             Pomodoro
           </button>
           <button
+            data-short-break
             class="
               text-white
               font-serif
@@ -128,10 +131,13 @@
               align-middle
               items-center
             "
+            onclick="timer.shortBreak()"
           >
             Pausa Curta
           </button>
           <button
+            data-long-break
+            onclick="timer.longBreak()"
             class="
               text-white
               font-serif
@@ -154,7 +160,8 @@
           </div>
           <div class="flex flex-col gap-3 justify-center items-center">
             <button
-              onclick="myVar()"
+              data-start-pomodoro
+              onclick="timer.start()"
               class="
                 text-white
                 font-serif
@@ -168,7 +175,8 @@
               Começar
             </button>
             <button
-              onclick="myStopFunction()"
+              data-pause-pomodoro
+              onclick="timer.stop()"
               class="
                 text-white
                 font-serif
@@ -181,10 +189,25 @@
             >
               Pausar
             </button>
+            <button
+              onclick="timer.clear()"
+              class="
+                text-white
+                font-serif
+                rounded-full
+                w-full
+                py-1
+                px-3
+                bg-secondary__red
+              "
+            >
+              Reiniciar
+            </button>
           </div>
         </div>
       </section>
     </main>
     <script src="./src/js/main.js"></script>
+    <script src="./src/js/TodoList.js"></script>
   </body>
 </html>
